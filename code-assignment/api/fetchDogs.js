@@ -12,10 +12,31 @@ export async function fetchDogs() {
   const cachedData = readCache();
 
   if (cachedData) {
+    console.log("using cached");
+    return cachedData;
   } else {
     try {
-      const resp = await fetch("");
+      const resp = await fetch("https://dog.ceo/api/breeds/list/all");
       const dogList = await resp.json();
+
+      let dogBreeds = [];
+
+      // create single flat list following naming structure <breed><grouping>
+      const groupings = Object.keys(dogList.message);
+      groupings.forEach((group) => {
+        const groupBreeds = dogList.message[group];
+        if (groupBreeds.length > 0) {
+          groupBreeds.forEach((breed) => {
+            dogBreeds.push(`${breed} ${group}`);
+          });
+        } else {
+          dogBreeds.push(`${group}`);
+        }
+      });
+
+      writeCache(dogBreeds);
+
+      return dogBreeds;
     } catch (err) {
       console.log(
         `There was a problem fetching dog breed data from the DogAPI, please try again later`,
@@ -23,9 +44,22 @@ export async function fetchDogs() {
       return;
     }
   }
-  return;
 }
 
-function readCache() {}
+function readCache() {
+  try {
+    const data = fs.readFileSync(cacheFilePath);
+    return JSON.parse(data);
+  } catch (err) {
+    return;
+  }
+}
 
-function writeCache(data) {}
+function writeCache(data) {
+  try {
+    fs.writeFileSync(cacheFilePath, JSON.stringify(data));
+  } catch (err) {
+    console.log(`There was a problem writing dog breed data to local cache`);
+  }
+  return;
+}
