@@ -17,4 +17,6 @@ That covers most of the work that I did here. I did not have time to create some
 
 Thanks for checking out my work, cheers!
 
-## Some final pics of the assignment
+## Final little picture of the program in action!
+![bcps_pic](https://github.com/christopher-tse/bcps-coding-assignment/assets/50059518/0e2a6181-c3e6-4288-a8d3-4a048933c609)
+
