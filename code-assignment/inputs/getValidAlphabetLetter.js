@@ -13,7 +13,9 @@ export async function getValidAlphabetLetter() {
     letter = letter.toString();
 
     if (letter.length !== 1 || !letter.match(/[a-z]/i)) {
-      console.log("invalid letter, try again");
+      console.log(
+        "Invalid letter input.\nA valid letter input contains a single alphabetic letter.\nPlease try again.",
+      );
       continue;
     }
 

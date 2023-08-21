@@ -12,7 +12,6 @@ export async function fetchDogs() {
   const cachedData = readCache();
 
   if (cachedData) {
-    console.log("using cached");
     return cachedData;
   } else {
     try {
