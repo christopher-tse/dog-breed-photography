@@ -12,5 +12,6 @@ Some things to note about my implementation:
 - In terms of generating the itinerary/photograph schedule for each user, I decided that I would simply use some built in sorting methods instead of implementing something more complicated since the overall time complexity to help us both search and iterate through dog breeds in ascending alphabetical order for each letter or until dog breeds have been exhausted seems to be roughly in the O(s*n*logn) time. So to break it down, I used sort() on the original dog breeds list that was fetched (or from local cache) after flattening all necessary breed/groups. Then, I essentially iterated through each selected letter and walked along the sorted list while printing out breeds continuously if they started with the currently selected letter.
 
 ## Final snippet of the program in action!
-![bcps_pic](https://github.com/christopher-tse/bcps-coding-assignment/assets/50059518/0e2a6181-c3e6-4288-a8d3-4a048933c609)
+![snippet](https://github.com/christopher-tse/dog-breed-photography/assets/50059518/eb53e407-edda-4b0b-8507-251046a3098a)
+
 
